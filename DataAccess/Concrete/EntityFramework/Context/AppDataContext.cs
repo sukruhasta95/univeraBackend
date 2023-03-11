@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.EntityFramework.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-OF7ALK0; database=UniveraProject;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=DESKTOP-7TA65AJ; database=UniveraProject;integrated security=true;");
         }
 
         public DbSet<User> Users { get; set; }

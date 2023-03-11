@@ -14,6 +14,7 @@ namespace Business.Constants
         public static string AccountUpdated = "Hesap Güncellendi";
         public static string AccountNotFound = "Hesap Bulunamadı";
         public static string InsufficientBalance = "Yetersiz Bakiye";
+        public static string QuantityIsNotLessThenZero = "Sıfırdan büyük değer giriniz.";
 
         //user messages:
 

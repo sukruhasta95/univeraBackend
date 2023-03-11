@@ -33,13 +33,16 @@ namespace Business.Concrete
             {
                 var totalBalance = existAccount.TotalBalance;
                 var currentBalance = totalBalance - account.Quantity;
-
+                if (account.Quantity < 0)
+                {
+                    return new ErrorResult(Messages.QuantityIsNotLessThenZero);
+                }
                 if (account.Quantity < totalBalance)
                 {
 
                     existAccount.Id = account.Id;
                     existAccount.TotalBalance = currentBalance;
-                    
+
                     _accountDal.Update(existAccount);
                     return new SuccessResult(Messages.AccountUpdated);
                 }
@@ -59,7 +62,7 @@ namespace Business.Concrete
         public IDataResult<List<Account>> GetAll()
         {
 
-            var accounts =  _accountDal.GetList(x => x.Active == true && x.UserId==1).ToList();
+            var accounts = _accountDal.GetList(x => x.Active == true && x.UserId == 1).ToList();
             return new SuccessDataResult<List<Account>>(accounts);
 
         }
@@ -73,14 +76,16 @@ namespace Business.Concrete
         {
             var existAccount = _accountDal.GetList().Where(x => x.Id == account.Id && x.Active == true).FirstOrDefault();
             var totalBalance = existAccount.TotalBalance;
+            if (account.Quantity < 0)
+                return new ErrorResult(Messages.QuantityIsNotLessThenZero);
             var currentBalance = totalBalance + account.Quantity;
 
             if (existAccount != null)
             {
                 existAccount.Id = account.Id;
                 existAccount.TotalBalance = currentBalance;
-                                   
-                 _accountDal.Update(existAccount);
+
+                _accountDal.Update(existAccount);
                 return new SuccessResult(Messages.AccountUpdated);
 
             }
