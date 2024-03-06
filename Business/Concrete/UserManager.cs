@@ -31,17 +31,17 @@ namespace Business.Concrete
         public void Delete(int id)
         {
 
-            var existUser = _userDal.GetList(x=>x.Id==id).FirstOrDefault();
+            var existUser = _userDal.GetList(x => x.Id == id).FirstOrDefault();
 
             existUser.Id = id;
-            existUser.Active = false; 
+            existUser.Active = false;
 
             _userDal.Update(existUser);
         }
 
         public IDataResult<List<User>> GetAll()
         {
-          var userList = _userDal.GetList(x=>x.Active==true).ToList();
+            var userList = _userDal.GetList(x => x.Active == true).ToList();
 
             return new SuccessDataResult<List<User>>(userList);
         }
@@ -53,7 +53,7 @@ namespace Business.Concrete
 
         public void Update(User user)
         {
-            _userDal.Update(user);  
+            _userDal.Update(user);
         }
     }
 }
