@@ -35,6 +35,7 @@ namespace Business.Concrete
 
             existUser.Id = id;
             existUser.Active = false;
+            existUser.Name = "sukruhasta";
 
             _userDal.Update(existUser);
         }
