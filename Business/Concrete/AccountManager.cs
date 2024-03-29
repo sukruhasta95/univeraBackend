@@ -72,6 +72,7 @@ namespace Business.Concrete
             return _accountDal.Get(x => x.Id == id && x.Active == true);
         }
 
+        /// </summary>
         public IResult Deposit(Transactions account)
         {
             var existAccount = _accountDal.GetList().Where(x => x.Id == account.Id && x.Active == true).FirstOrDefault();
